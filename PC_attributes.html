@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Computer Attributes</title>
+  </head>
+  <body>
+    <h1>Computer Attributes</h1>
+    <ul>
+      <li>Processor: <span id="processor"></span></li>
+      <li>Memory: <span id="memory"></span></li>
+      <li>Storage: <span id="storage"></span></li>
+    </ul>
+    <script>
+      // Get computer attributes
+      var processor = navigator.hardwareConcurrency;
+      var memory = navigator.deviceMemory;
+      var storage = navigator.storage;
+
+      // Display attributes on the page
+      document.getElementById("processor").innerHTML = processor;
+      document.getElementById("memory").innerHTML = memory;
+      document.getElementById("storage").innerHTML = storage;
+    </script>
+  </body>
+</html>
