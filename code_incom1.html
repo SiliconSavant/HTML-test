@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Memory Game</title>
+    <style>
+      /* CSS styles for the game */
+      /* Add your own styles here */
+    </style>
+  </head>
+  <body>
+    <h1>Memory Game</h1>
+    <p>Click on the cards to flip them over and try to find all the matching pairs.</p>
+    <div id="game-area">
+      <!-- Add card elements here -->
+    </div>
+    <script>
+      // JavaScript code for the game
+      // Add your own code here
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Memory Game</title>
+    <style>
+      /* CSS styles for the game */
+      #game-area {
+        display: flex;
+        flex-wrap: wrap;
+        width: 400px;
+        margin: 0 auto;
+      }
+      .card {
+        width: 50px;
+        height: 50px;
+        background-color: gray;
+        border: 1px solid black;
+        margin: 10px;
+      }
+      .card.flipped {
+        background-color: white;
+      }
+    </style>
+   </head>
+  <body>
+    <h1>Memory Game</h1>
+    <p>Click on the cards to flip them over and try to find all the matching pairs.</p>
+    <div id="game-area">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+    <script>
+      // JavaScript code for the game
+      const cards = document.querySelectorAll('.card');
+      let hasFlippedCard = false;
+      let lockBoard = false;
+      let firstCard, secondCard;
+
+      function flipCard() {
+        if (lockBoard) return;
+        if (this === firstCard) return;
+        
+        this.classList.add('flipped');
+
+        if (!hasFlippedCard) {
+          // first click
+          hasFlippedCard = true;
+          firstCard = this;
+
+          return;
+        }
+
+        // second click
+        secondCard = this;
+        checkForMatch();
+      }
+
+      function checkForMatch() {
+        let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+        isMatch ? disableCards() : unflipCards();
+      }
+
+      function disableCards() {
+        firstCard.removeEventListener('click', flip
